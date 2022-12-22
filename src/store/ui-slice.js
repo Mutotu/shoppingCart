@@ -5,7 +5,7 @@ const uiSlice = createSlice({
   initialState: { cartIsVisivble: false, notification: null },
   reducers: {
     toggle(state) {
-      state.cartIsVisivble = !state.cartIsVisivble;
+      state.cartIsVisible = !state.cartIsVisible;
     },
     showNotification(state, action) {
       state.notification = {
