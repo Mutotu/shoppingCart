@@ -8,6 +8,24 @@ const cartSlice = createSlice({
     changed: false,
   },
   reducers: {
+    resetAl(state) {
+      state.items = [];
+      state.totalQuantity = 0;
+      state.changed = true;
+    },
+
+    resetCart(state, action) {
+      const itemdId = action.payload;
+
+      state.items = state.items.filter((item) => item.id !== itemdId);
+
+      state.totalQuantity = state.items.reduce((acc, i) => {
+        acc += i.quantity;
+        return acc;
+      }, 0);
+      state.changed = true;
+    },
+
     replaceCart(state, action) {
       state.totalQuantity = action.payload.totalQuantity;
       state.items = action.payload.items;
