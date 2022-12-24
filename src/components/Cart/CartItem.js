@@ -16,12 +16,15 @@ const CartItem = (props) => {
         price,
       })
     );
+    dispatch(cartActions.calcTotal());
   };
   const removeItemHandler = () => {
     dispatch(cartActions.removeItemFromCart(id));
+    dispatch(cartActions.calcTotal());
   };
   const resetCartHandler = () => {
     dispatch(cartActions.resetCart(id));
+    dispatch(cartActions.calcTotal());
   };
   return (
     <li className={classes.item}>

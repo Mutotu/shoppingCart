@@ -15,6 +15,7 @@ const ProductItem = (props) => {
         price,
       })
     );
+    dispatch(cartActions.calcTotal());
   };
   return (
     <li className={classes.item}>

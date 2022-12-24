@@ -9,13 +9,17 @@ import CartItem from "./CartItem";
 const Cart = (props) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  const totalCharge = useSelector((state) => state.cart.totalCharge);
+  console.log(totalCharge);
   const resetAllHandle = () => {
     dispatch(cartActions.resetAl());
+    dispatch(cartActions.calcTotal());
   };
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
       <Button onClick={resetAllHandle}>Reset All</Button>
+      <h3>Total Charge: ${totalCharge}</h3>
       <ul>
         {cartItems.map((item) => (
           <CartItem
