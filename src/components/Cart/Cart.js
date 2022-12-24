@@ -15,10 +15,16 @@ const Cart = (props) => {
     dispatch(cartActions.resetAl());
     dispatch(cartActions.calcTotal());
   };
+  const paymentHandle = () => {
+    dispatch(cartActions.makePayment());
+  };
   return (
     <Card className={classes.cart}>
       <h2>Your Shopping Cart</h2>
-      <Button onClick={resetAllHandle}>Reset All</Button>
+      {cartItems.length > 0 && (
+        <Button onClick={resetAllHandle}>Reset All</Button>
+      )}
+      <Button onClick={paymentHandle}>Pay</Button>
       <h3>Total Charge: ${totalCharge}</h3>
       <ul>
         {cartItems.map((item) => (

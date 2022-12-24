@@ -7,8 +7,12 @@ const cartSlice = createSlice({
     totalQuantity: 0,
     changed: false,
     totalCharge: 0,
+    pay: false,
   },
   reducers: {
+    makePayment(state) {
+      state.pay = !state.pay;
+    },
     calcTotal(state) {
       state.totalCharge = state.items.reduce(
         (acc, item) => acc + item.totalPrice,
