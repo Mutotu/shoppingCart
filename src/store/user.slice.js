@@ -9,7 +9,7 @@ const userSLice = createSlice({
   reducers: {
     addUserInfo(state, action) {
       const newUser = action.payload;
-      const existingUser = state.users.find((user) => user.id === newUser.id);
+      // const existingUser = state.users.find((user) => user.id === newUser.id);
 
       state.users.push({
         id: newUser.id,
@@ -17,6 +17,9 @@ const userSLice = createSlice({
         address: newUser.address,
         creditCard: newUser.creditCard,
       });
+    },
+    replaceUsers(state, action) {
+      state.users = action.payload.users;
     },
   },
 });

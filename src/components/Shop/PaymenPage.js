@@ -6,7 +6,7 @@ const DEFAULT_USER = { name: "", address: "", creditCard: "", id: "" };
 const PaymentPage = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState(DEFAULT_USER);
-  const users = useSelector((state) => state.users);
+  const users = useSelector((state) => state.user);
 
   const userInforHandler = (e) => {
     setUser((pre) => ({
