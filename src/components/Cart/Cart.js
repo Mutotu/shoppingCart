@@ -10,7 +10,7 @@ const Cart = (props) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
   const totalCharge = useSelector((state) => state.cart.totalCharge);
-  console.log(totalCharge);
+
   const resetAllHandle = () => {
     dispatch(cartActions.resetAl());
     dispatch(cartActions.calcTotal());

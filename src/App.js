@@ -7,6 +7,7 @@ import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
 import Notification from "./components/UI/Notification";
 import { sendCartData, fetchCartData } from "./store/cart-actions";
+import { sendUserData } from "./store/user-actions";
 
 let isInitial = true;
 
@@ -17,6 +18,7 @@ function App() {
   const cart = useSelector((state) => state.cart);
   const notification = useSelector((state) => state.ui.notification);
   const isPaying = useSelector((state) => state.cart.pay);
+  const users = useSelector((state) => state.users);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -43,7 +45,10 @@ function App() {
       dispatch(sendCartData(cart));
     }
   }, [cart, dispatch]);
-
+  useEffect(() => {
+    dispatch(sendUserData(users));
+    console.log(users);
+  }, [users, dispatch]);
   return (
     <Fragment>
       {isPaying ? (

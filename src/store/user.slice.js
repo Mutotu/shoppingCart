@@ -1,12 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const userSLice = createSlice({
-  name: "user",
-  initialState: { name: "", address: "", creditCard: "" },
+  name: "users",
+  initialState: {
+    users: [],
+  },
+
   reducers: {
-    //add user { name: "", address: "", creditCard: "" }
-    //with unique id
-    //andd try to implement the backend for it
+    addUserInfo(state, action) {
+      const newUser = action.payload;
+      const existingUser = state.users.find((user) => user.id === newUser.id);
+
+      state.users.push({
+        id: newUser.id,
+        name: newUser.name,
+        address: newUser.address,
+        creditCard: newUser.creditCard,
+      });
+    },
   },
 });
 

@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { userActions } from "../../store/user.slice";
 
-const DEFAULT_USER = { name: "", address: "", creditCard: "" };
+const DEFAULT_USER = { name: "", address: "", creditCard: "", id: "" };
 const PaymentPage = () => {
+  const dispatch = useDispatch();
   const [user, setUser] = useState(DEFAULT_USER);
+  const users = useSelector((state) => state.users);
 
   const userInforHandler = (e) => {
-    setUser((pre) => ({ ...pre, [e.target.name]: e.target.value }));
+    setUser((pre) => ({
+      ...pre,
+      [e.target.name]: e.target.value,
+      id: Math.random() * 11,
+    }));
   };
   const submitHandler = (e) => {
     e.preventDefault();
+
+    dispatch(userActions.addUserInfo(user));
+    console.log(users);
     setUser(DEFAULT_USER);
   };
 
